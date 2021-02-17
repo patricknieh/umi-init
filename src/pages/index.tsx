@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ConnectRC, Loading, connect, IGlobalState } from 'umi';
 import { getBin } from '../api';
 import useUser from '../data/user';
+import { useRequest } from 'ahooks';
 
 interface PageProps {
   global: IGlobalState;
@@ -11,6 +12,9 @@ interface PageProps {
 
 const Page: ConnectRC<PageProps> = ({ loading, global, dispatch, title }) => {
   const { userInfo } = global;
+  const { data, error } = useRequest(getBin);
+  console.log('data', data);
+  console.log('error', error);
 
   const { users, msg } = useUser({ name: 'paddy' });
   console.log('users', users);

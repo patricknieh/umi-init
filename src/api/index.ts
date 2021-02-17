@@ -1,4 +1,4 @@
-import request from '../utils/requester';
+import request from '../utils/fetcher';
 
 export const getUser = () => {
   return request('/api/user');

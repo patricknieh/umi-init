@@ -46,9 +46,9 @@ export default (url: string, data = '', method = 'GET') => {
   }
 
   // 缓存请求过的地址与参数，如果一样则直接返回缓存
-  const fingerprint = cryptoUtil.md5(
-    `${url}${body ? JSON.stringify(body) : ''}`,
-  );
+  //   const fingerprint = cryptoUtil.md5(
+  //     `${url}${body ? JSON.stringify(body) : ''}`,
+  //   );
   // if (store.get(fingerprint)) return store.get(fingerprint);
 
   // 发起请求
@@ -57,7 +57,7 @@ export default (url: string, data = '', method = 'GET') => {
     fetch(url, options)
       .then(async (res: any) => {
         let json = await res.json();
-        saveCache(fingerprint, json);
+        // saveCache(fingerprint, json);
         resolve(json);
       })
       .catch((e: any) => {
